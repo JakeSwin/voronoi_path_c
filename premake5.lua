@@ -9,7 +9,7 @@ targetdir "bin/%{cfg.buildcfg}"
 files { "./src/**.h", "./src/**.c" }
 
 filter "system:linux"
-links { "m" }   -- Link math library if jc_voronoi uses math functions
+links { "m", "raylib" }
 
 filter "configurations:Debug"
 defines { "DEBUG" }
