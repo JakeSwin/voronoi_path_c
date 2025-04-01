@@ -11,6 +11,9 @@ files { "./src/**.h", "./src/**.c" }
 filter "system:linux"
 links { "m", "raylib" }
 
+filter "system:macosx"
+links { "m", "raylib", "Cocoa.framework", "IOKit.framework", "OpenGL.framework" }
+
 filter "configurations:Debug"
 defines { "DEBUG" }
 symbols "On"

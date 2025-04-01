@@ -144,8 +144,8 @@ static void relax_points(const jcv_diagram* diagram, jcv_point* points, jcv_poin
                     unsigned char b = *(pixelOffset + 2);
 
                     float brightness = (r + g + b) / 3.0f;
-                    // float weight = 1.0f - (brightness / 255.0f); // Go towards darkness
-                    float weight = brightness / 255.0f; // Go towards light
+                    float weight = 1.0f - (brightness / 255.0f); // Go towards darkness
+                    // float weight = brightness / 255.0f; // Go towards light
 
                     jcv_point img_space = {
                         .x = x,
@@ -204,7 +204,7 @@ int main(void) {
 
     int img_width, img_height, components;
     // unsigned char *data = stbi_load("./000/groundtruth/first000_gt.png", &img_width, &img_height, &components, 3);
-    unsigned char *data = stbi_load("./images/gp_map_grey.png", &img_width, &img_height, &components, 3);
+    unsigned char *data = stbi_load("./images/fisk.jpg", &img_width, &img_height, &components, 3);
     if( !data )
     {
         puts("Could not open file");
@@ -231,7 +231,7 @@ int main(void) {
 
     // Create raylib Texture2D
     // Texture2D texture = LoadTexture("./000/groundtruth/first000_gt.png");
-    Texture2D texture = LoadTexture("./images/gp_map_grey.png");
+    Texture2D texture = LoadTexture("./images/fisk.jpg");
 
     jcv_diagram diagram;
     memset(&diagram, 0, sizeof(jcv_diagram));
@@ -333,7 +333,7 @@ int main(void) {
             {
                 jcv_point p0 = remap(&points[i], &diagram.min, &diagram.max, &dimensions);
 
-                DrawCircle((int)round(p0.x), (int)round(p0.y), 5.0, PINK);
+                DrawCircle((int)round(p0.x), (int)round(p0.y), 2.0, PINK);
             }
         EndDrawing();
 
